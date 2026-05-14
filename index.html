@@ -45,11 +45,11 @@
         .ai-toggle-btn.muted svg { fill: #999; }
 
         /* Hình nền cho từng nghề */
-        .bg-xe-nang { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-8.5.26/main/bg-xe-nang.jpg'); }
-        .bg-can-truc { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-8.5.26/main/bg-can-truc.jpg'); }
-        .bg-cau-truc { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-8.5.26/main/bg-cau-truc.jpg'); }
+        .bg-xe-nang { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-14.5.26/main/bg-xe-nang2.jpg'); }
+        .bg-can-truc { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-14.5.26/main/bg-can-truc.jpg'); }
+        .bg-cau-truc { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-14.5.26/main/bg-cau-truc.jpg'); }
         .bg-may-xuc { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-8.5.26/main/bg-may-xuc.jpg'); }
-        .bg-may-rai { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/DE-T-HI-10.5.26/main/bg-may-rai.jpg'); }
+        .bg-may-rai { background-image: url('https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-14.5.26/main/bg-may-rai.jpg'); }
 
         .welcome-container, #quiz-content, .sidebar-right > div, #ai-container, .confirm-modal-content {
             background: rgba(255, 255, 255, 0.55) !important;
@@ -214,7 +214,7 @@
 
     <div id="ai-container">
         <div class="ai-avatar">
-            <img src="https://raw.githubusercontent.com/phamhoan-caee/de-thi-AI/main/%E1%BA%A3nh_nh%C3%A2n_vat_de_thi-removebg-preview.png" alt="AI">
+            <img src="https://raw.githubusercontent.com/phamhoan-caee/trac-nghiem-14.5.26/main/%E1%BA%A3nh%20nh%C3%A2n%20vat%20de%20thi.png" alt="AI">
             <div class="speaking-waves" id="ai-waves">
                 <div class="wave"></div><div class="wave"></div><div class="wave"></div>
             </div>
@@ -266,8 +266,8 @@
     </div>
 
 <script>
-    const BASE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT4BCGb7JrlQzmhy1-0Bl-qQEVU9OaBabk4xFOZtvMlIVkhDpH7tuMlfdkdZ94ytVfD6cyGT6VDmlP0/pub?output=csv&gid=";
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxEqaN1nbwUi9oEPKaUfPQSUCdt1TBYPPcL9t8gLbQelU6nCTxbGBnk8cpRfa1Q5QTMvw/exec";
+    const BASE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVlApZlHDZWTFVWxMCnGIRYairZie19pyoOsuEK1O0kU3nAIVLbRIbxZVExZV0J_7q0M60mg2Wsem_/pub?output=csv&gid=";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzF7NajodqhdsK6uCyubJikCPGyyPY-1JjzhQCKlMnm4Fc0Pi9pwXoP5_WofFv4MgDG/exec";
     
     let allQuestions = [], selectedQuestions = [], studentAnswers = [];
     let currentQuestionIndex = 0, timeLeft = 1200, timerInterval, isSubmitted = false, cheatCount = 0;
