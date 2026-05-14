@@ -387,19 +387,33 @@
         } catch(e) { alert("Lỗi kết nối!"); btn.disabled = false; }
     }
 
-    function startQuiz() {
+   function startQuiz() {
         document.getElementById('display-name').innerText = document.getElementById('studentName').value.toUpperCase();
         selectedQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 30);
+        
+        // 1. Chuyển đổi giao diện
         document.getElementById('start-screen').style.display = 'none';
         document.getElementById('ai-container').style.display = 'flex';
         document.getElementById('timer').style.display = 'block';
         document.getElementById('quiz-screen').style.display = 'grid';
-        showQuestion(0);
+        
+        // 2. Kích hoạt bộ đếm thời gian
         startTimer();
+        
+        // 3. Hiển thị câu hỏi số 1
+        showQuestion(0);
+        
+        // 4. Bổ sung: Ép AI đọc ngay lập tức câu 1
+        // (Lệnh này giúp kích hoạt giọng nói ngay sau khi tương tác nút bấm)
+        if (selectedQuestions.length > 0) {
+            stopSpeaking();
+            aiSpeakQuestion(selectedQuestions[0]);
+        }
     }
 
     function showQuestion(idx) {
-        stopSpeaking(); // Dừng đọc ngay khi bấm chuyển câu (Lùi lại/Tiếp theo/Chọn số câu)
+        // Mỗi lần chuyển câu đều dừng đọc câu cũ để tránh chồng chéo
+        stopSpeaking(); 
         currentQuestionIndex = idx;
         const q = selectedQuestions[idx];
         const stored = studentAnswers.find(a => a.qIndex === idx);
@@ -411,6 +425,7 @@
         
         q.options.forEach((opt, i) => {
             let cls = stored && opt === stored.selected ? "selected" : "";
+            // Sử dụng replace để tránh lỗi dấu nháy đơn trong đáp án
             html += `<div class="option-item ${cls}" onclick="selectAns(${idx}, '${opt.replace(/'/g, "\\'")}')"><b>${labels[i]}.</b> ${opt}</div>`;
         });
 
@@ -422,9 +437,12 @@
                     <button class="btn-start" style="background:var(--btn-blue); flex:1;" onclick="showQuestion(${idx-1})" ${idx===0?'disabled':''}>Lùi lại</button>
                     <button class="btn-start" style="background:var(--btn-blue); flex:1;" onclick="showQuestion(${idx+1})" ${idx===29?'disabled':''}>Tiếp theo</button>
                  </div>`;
+        
         document.getElementById('quiz-content').innerHTML = html;
         renderGrid();
         updateProgressBar();
+        
+        // Đọc câu hỏi
         aiSpeakQuestion(q);
     }
 
